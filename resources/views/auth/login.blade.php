@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8">
     <title>PalShop - Online Shop</title>
@@ -10,28 +10,26 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('img/favicon') }}" rel="{{ asset('icon') }}">
+    <link href="{{ url('img/favicon') }}" rel="icon">
 
     <!-- Google Web Fonts -->
-    <link rel="{{ asset('preconnect') }}" href="{{ asset('https://fonts.gstatic.com/') }}">
-    <link href="{{ asset('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap') }}"
-        rel="stylesheet">
+    <link rel="{{URL::asset('preconnect')}}" href="{{URL::asset('https://fonts.gstatic.com/')}}">
+    <link href="{{URL::asset('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap')}}" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="{{ asset('../../cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css') }}"
-        rel="stylesheet">
+    <link href="{{asset('../../cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css')}}" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{URL::asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('Css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('Css/style.css') }}" rel="stylesheet" type="text/css" >
 </head>
 
 <body>
-     <!-- Topbar Start -->
-     <div class="container-fluid">
+    <!-- Topbar Start -->
+    <div class="container-fluid" style="color:">
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center h-100">
@@ -47,11 +45,11 @@
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <button class="dropdown-item" type="button">
-                                <a href="">Sign in</a></button>
-
+                                <a href="{{ route('login') }}">Log
+                        in</a> </button>
 
                             <button class="dropdown-item" type="button">
-                                <a href="">Sign up</a></button>
+                                <a href="{{ route('register') }}">Sign Up</a></button>
                         </div>
                     </div>
                     <div class="btn-group mx-2">
@@ -85,7 +83,7 @@
         </div>
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
-                <a href=""  class="text-decoration-none">
+                <a href="" class="text-decoration-none">
                     <span class="h1 text-uppercase text-primary bg-dark px-2">Pal</span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
                 </a>
@@ -117,7 +115,7 @@
             <div class="col-lg-3 d-none d-lg-block">
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
-                    <a href="" class="text-decoration-none d-block d-lg-none">
+                    <a href="{{ url('/dashboard') }}" class="text-decoration-none d-block d-lg-none">
                         <span class="h1 text-uppercase text-dark bg-light px-2">Pal</span>
                         <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
                     </a>
@@ -199,36 +197,34 @@
                     </div>
 
                       <!-- Remember Me -->
-                      <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-
-                        <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember"><label>
-                            <span class="">{{ __('Remember me') }}</span>
-                        </label>
-                        <div>
-                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <div class="custom-control custom-checkbox">
+                        <div class="form-outline flex-fill mb-0">
+                        <input id="remember_me" type="checkbox" name="remember">
+                        <span class="">{{ __('Remember me') }}</span>
+                        <div class="mx-4">
+                        </div>
+                        <div class="form-outline flex-fill mb-0">
                                 @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}">
+                                    <a class="" href="{{ route('password.request') }}">
                                         {{ __('Forgot password?') }}
                                     </a>
                                 @endif
-                </div>
-                    </div>
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <x-primary-button class="btn btn-primary btn-lg">
-                            {{ __('Log in') }}
-                        </x-primary-button>
+                                </div>
+                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                <x-primary-button class="btn btn-primary btn-lg">
+                                    {{ __('Log in') }}
+                                </x-primary-button>
+                            </div>
                     </div>
                 </div>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </form>
-
-                  </div>
+                </div>
                   <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
                     <img src="{{ asset('img/draw1.jpg') }}"
                       class="img-fluid" alt="Sample image">
-
                   </div>
                 </div>
               </div>
